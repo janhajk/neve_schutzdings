@@ -1,11 +1,21 @@
 <?php
 
 
-/**
- * Brigsby - ShopOfThings
- *
- * @package brigsby-shopofthings
- */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+if ( ! function_exists( 'neve_child_load_css' ) ):
+	/**
+	 * Load CSS file.
+	 */
+	function neve_child_load_css() {
+		wp_enqueue_style( 'neve-child-style', trailingslashit( get_stylesheet_directory_uri() ) . 'style.css', array( 'neve-style' ), NEVE_VERSION );
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'neve_child_load_css', 20 );
+
+
+
 
 
  // checks for woocommerce templates in woocommerce folder
@@ -58,7 +68,7 @@ function oiw_add_fbpixel() {
 }
 
 
-add_action('wp_head', 'mask_add_google_analytics');
+add_action('wp_head', 'mask_add_google_analytics', 20);
 function mask_add_google_analytics() {
       ?>
       <!-- Global site tag (gtag.js) - Google Analytics -->
