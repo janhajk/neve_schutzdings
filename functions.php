@@ -58,4 +58,18 @@ function oiw_add_fbpixel() {
 }
 
 
+add_action('wp_head', 'mask_add_google_analytics');
+function mask_add_google_analytics() {
+      ?>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KTWM28FPP"></script>
+      <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-7KTWM28FPP');
+      </script>
+      <?php
+}
+
 ?>
